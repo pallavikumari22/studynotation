@@ -71,6 +71,12 @@ export const contactusEndpoint = {
   CONTACT_US_API: BASE_URL + "/reach/contact",
 }
 
+// AI TUTOR API
+export const aiEndpoints = {
+  AI_RECOMMENDATIONS_API: BASE_URL + "/ai/recommendations",
+  AI_ADVISOR_API: BASE_URL + "/ai/advisor",
+}
+
 // SETTINGS PAGE API
 export const settingsEndpoints = {
   UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/updateDisplayPicture",

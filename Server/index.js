@@ -11,6 +11,7 @@ const profileRoutes=require("./routes/Profile");
 const paymentRoutes=require("./routes/Payments");
 const courseRoutes=require("./routes/Course");
 const contactRoutes=require("./routes/Contact");
+const aiRoutes=require("./routes/AI");
 
 //Connection
 const database=require("./config/database");
@@ -60,6 +61,7 @@ app.use("/api/v1/profile",profileRoutes);
 app.use("/api/v1/course",courseRoutes);
 app.use("/api/v1/payment",paymentRoutes);
 app.use("/api/v1/reach",contactRoutes);
+app.use("/api/v1/ai",aiRoutes);
 
 
 //default route

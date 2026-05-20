@@ -29,6 +29,7 @@ import ViewCourse from "./pages/ViewCourse";
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
 import CourseSearch from "./pages/CourseSearch";
 import CompareCourses from "./pages/CompareCourses";
+import AIAssistant from "./pages/AIAssistant";
 import Wishlist from "./components/core/Dashboard/Wishlist";
 import ProgressDashboard from "./components/core/Dashboard/ProgressDashboard";
 import AdminPanel from "./components/core/Dashboard/AdminPanel";
@@ -45,6 +46,7 @@ function App() {
           <Route path="/catalog/:catalogName" element={<Catalog/>}/>
           <Route path="/courses" element={<CourseSearch/>}/>
           <Route path="/compare" element={<CompareCourses/>}/>
+          <Route path="/ai" element={<AIAssistant/>}/>
           <Route path="/courses/:courseId" element={<CourseDetails/>}/>
           <Route path="/login" element={<OpenRoute><Login/></OpenRoute>}/>
           <Route path="/signup" element={<OpenRoute><Signup/></OpenRoute>}/>

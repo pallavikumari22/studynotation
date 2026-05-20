@@ -23,10 +23,15 @@ Required Vercel environment variables:
 - `RAZORPAY_KEY`
 - `RAZORPAY_SECRET`
 - `MAIL_HOST`
+- `MAIL_PORT`
 - `MAIL_USER`
 - `MAIL_PASS`
+- `OPENAI_API_KEY`
+- `OPENAI_MODEL`
 
 For a same-domain Vercel deployment, do not set `REACT_APP_BASE_URL`. The frontend will call `/api/v1`.
+
+`OPENAI_API_KEY` enables the AI Tutor page. If it is not set, the page still works with local course recommendations and study-plan fallback text.
 
 After deploying:
 

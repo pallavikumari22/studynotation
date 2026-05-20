@@ -16,6 +16,10 @@ export const NavbarLinks = [
     path: "/compare",
   },
   {
+    title: "AI Tutor",
+    path: "/ai",
+  },
+  {
     title: "About Us",
     path: "/about",
   },
