@@ -1,4 +1,4 @@
-const {instance}=require("../config/razorpay");
+const {instance, isRazorpayConfigured}=require("../config/razorpay");
 const Course=require("../models/Course");
 const User=require("../models/User");
 const mailSender=require("../utils/mailSender");
@@ -12,6 +12,13 @@ exports.capturePayment=async(req,res)=>{
   
   const {courses}=req.body;
   const userId=req.user.id;
+
+  if(!isRazorpayConfigured){
+    return res.status(503).json({
+      success:false,
+      message:"Payments are currently disabled. Configure Razorpay keys to enable checkout."
+    });
+  }
 
   if(courses.length===0){
     return res.json({
@@ -79,6 +86,13 @@ exports.verifySignature=async(req,res)=>{
   const razorpay_signature=req.body?.razorpay_signature;
   const courses=req.body?.courses;
   const userId=req.user.id;
+
+  if(!isRazorpayConfigured){
+    return res.status(503).json({
+      success:false,
+      message:"Payments are currently disabled. Configure Razorpay keys to verify checkout."
+    });
+  }
 
   if(!razorpay_order_id || !razorpay_payment_id || !razorpay_signature || !courses || !userId){
     return res.status(404).json({
@@ -179,6 +193,13 @@ const enrollStudents=async(courses,userId,res)=>{
 exports.sendPaymentSuccessEmail=async(req,res)=>{
   const {orderId,paymentId,amount}=req.body;
   const userId=req.user.id;
+
+  if(!process.env.MAIL_HOST || !process.env.MAIL_USER || !process.env.MAIL_PASS){
+    return res.status(200).json({
+      success:true,
+      message:"Payment email skipped because mail service is not configured"
+    });
+  }
 
   if(!orderId || !paymentId || !amount || !userId){
     return res.status(400).json({

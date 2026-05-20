@@ -34,11 +34,11 @@ export default function CoursesTable({courses,setCourses}){
 
 
   return (
-    <div className='text-white'>
+    <div className='overflow-x-auto text-white'>
       <Table>
         <Thead>
-          <Tr className="flex  gap-x-10 border-richblack-800 p-8">
-            <Th className="sm:w-[40%]">
+          <Tr className="grid min-w-[760px] grid-cols-[minmax(300px,1fr)_120px_120px_100px] gap-4 border-richblack-800 p-5">
+            <Th>
               Courses
             </Th>  
             <Th>
@@ -70,16 +70,16 @@ export default function CoursesTable({courses,setCourses}){
             :(
               
               courses?.map((course)=>(
-                <Tr className="flex gap-x-10 w-full border-richblack-800 p-8"
+                <Tr className="grid min-w-[760px] grid-cols-[minmax(300px,1fr)_120px_120px_100px] gap-4 border-richblack-800 p-5"
                 key={course?._id}>
-                    <Td className="flex sm:w-[40%] gap-x-4">
+                    <Td className="flex gap-4">
 <img src={course?.thumbnail} 
                        alt={course?.courseName}
-                       className=' w-[270px]  h-[150px] rounded-lg object-cover'
+                       className='h-[120px] w-[180px] shrink-0 rounded-lg object-cover'
                        />
-                      <div className='flex flex-col'>
-                        <p>{course?.courseName}</p>
-                        <p>{course?.courseDescription}</p>
+                      <div className='flex min-w-0 flex-col'>
+                        <p className="font-semibold">{course?.courseName}</p>
+                        <p className="line-clamp-3 text-sm text-richblack-300">{course?.courseDescription}</p>
                         <p>Created:</p>
                         {
                           course.status===COURSE_STATUS.DRAFT ? (

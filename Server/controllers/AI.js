@@ -2,6 +2,39 @@ const Course = require("../models/Course");
 
 const OPENAI_URL = "https://api.openai.com/v1/responses";
 
+const demoCourses = [
+  {
+    _id: "demo-full-stack",
+    courseName: "Full Stack Web Development Path",
+    courseDescription: "A starter roadmap covering HTML, CSS, JavaScript, React, Node, APIs, and deployment.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+    studentsEnrolled: [],
+    ratingAndReviews: [],
+    category: { name: "Web Development" },
+  },
+  {
+    _id: "demo-ai-productivity",
+    courseName: "AI Productivity and Prompting Basics",
+    courseDescription: "Learn how to use AI tools for studying, summaries, project planning, and revision.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80",
+    studentsEnrolled: [],
+    ratingAndReviews: [],
+    category: { name: "AI" },
+  },
+  {
+    _id: "demo-backend-api",
+    courseName: "Backend APIs with Node and MongoDB",
+    courseDescription: "Build secure REST APIs with authentication, database models, validation, and deployment.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80",
+    studentsEnrolled: [],
+    ratingAndReviews: [],
+    category: { name: "Backend" },
+  },
+];
+
 const buildCourseSummary = (courses) =>
   courses
     .map((course, index) => {
@@ -31,21 +64,26 @@ const getRelevantCourses = async ({ goal = "", budget = "" }) => {
     }
   }
 
-  let courses = await Course.find(query)
-    .populate("category", "name")
-    .populate("instructor", "firstName lastName")
-    .sort({ createdAt: -1 })
-    .limit(6);
-
-  if (!courses.length) {
-    courses = await Course.find({ status: "Published" })
+  try {
+    let courses = await Course.find(query)
       .populate("category", "name")
       .populate("instructor", "firstName lastName")
       .sort({ createdAt: -1 })
       .limit(6);
-  }
 
-  return courses;
+    if (!courses.length) {
+      courses = await Course.find({ status: "Published" })
+        .populate("category", "name")
+        .populate("instructor", "firstName lastName")
+        .sort({ createdAt: -1 })
+        .limit(6);
+    }
+
+    return courses.length ? courses : demoCourses;
+  } catch (error) {
+    console.warn("Using demo AI courses because database courses are unavailable:", error.message);
+    return demoCourses;
+  }
 };
 
 const localAdvisor = ({ goal, level, timePerWeek, courses }) => {

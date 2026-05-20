@@ -268,7 +268,7 @@ export default function AIAssistant() {
                   {recommendations.map((course) => (
                     <Link
                       key={course._id}
-                      to={`/courses/${course._id}`}
+                      to={String(course._id).startsWith("demo-") ? "/courses" : `/courses/${course._id}`}
                       className="rounded-md border border-richblack-700 bg-richblack-900 p-3 hover:border-yellow-50"
                     >
                       <img

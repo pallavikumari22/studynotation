@@ -46,7 +46,7 @@ const LearningGridArray = [
 
 const LearningGrid = () => {
   return (
-    <div className="grid mx-auto w-[350px] xl:w-fit grid-cols-1 xl:grid-cols-4 mb-12">
+    <div className="grid mx-auto w-full max-w-[350px] xl:max-w-none xl:w-fit grid-cols-1 xl:grid-cols-4 mb-12">
       {LearningGridArray.map((card, i) => {
         return (
           <div

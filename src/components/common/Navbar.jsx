@@ -49,14 +49,14 @@ function Navbar() {
         location.pathname !== "/" ? "bg-richblack-800" : ""
       } transition-all duration-200`}
     >
-      <div className="flex w-11/12 max-w-maxContent items-center justify-between">
+      <div className="flex w-11/12 max-w-maxContent items-center justify-between gap-4">
         {/* Logo */}
         <Link to="/">
           <img src={logo} alt="Logo" width={160} height={32} loading="lazy" />
         </Link>
         {/* Navigation links */}
         <nav className="hidden md:block">
-          <ul className="flex gap-x-6 text-richblack-25">
+          <ul className="flex items-center gap-x-4 text-sm text-richblack-25 lg:gap-x-6 lg:text-base">
             {NavbarLinks.map((link, index) => (
               <li key={index}>
                 {link.title === "Catalog" ? (
@@ -116,7 +116,7 @@ function Navbar() {
           </ul>
         </nav>
         {/* Login / Signup / Dashboard */}
-        <div className="hidden items-center gap-x-4 md:flex">
+        <div className="hidden shrink-0 items-center gap-x-3 md:flex">
           <ThemeToggle />
           {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
@@ -148,7 +148,7 @@ function Navbar() {
               <AiOutlineMenu onClick={()=>setShowDropDown(!showDropDown)} color="white" fontSize={24}/>
         </button>
       </div>
-    <div className={`w-[100vw] md:hidden p-4 h-fit bg-richblack-800 z-50 absolute top-[55px] text-white ${showDropDown?("block"):("hidden")}  border border-white`}> 
+    <div className={`left-0 right-0 md:hidden p-4 h-fit bg-richblack-800 z-50 absolute top-[55px] text-white ${showDropDown?("block"):("hidden")}  border border-white`}> 
     <ul className="flex  flex-col w-full gap-y-2 items-center gap-x-6 text-richblack-25">
             {NavbarLinks.map((link, index) => (
               <li key={index}>
