@@ -51,3 +51,12 @@ Local development:
 3. Run `npm install`.
 4. Run `cd Server && npm install`.
 5. Run `npm run dev`.
+
+Seed starter data:
+
+1. Put your MongoDB Atlas connection string in `Server/.env` as `MONGODB_URL`.
+2. Run `cd Server && npm run seed`.
+3. Login with one of the demo accounts:
+   - Admin: `admin@studynotion.com` / `Password@123`
+   - Instructor: `instructor@studynotion.com` / `Password@123`
+   - Student: `student@studynotion.com` / `Password@123`
