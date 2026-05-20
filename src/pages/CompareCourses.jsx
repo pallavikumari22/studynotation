@@ -45,12 +45,12 @@ export default function CompareCourses() {
 
   return (
     <div className="mx-auto min-h-[calc(100vh-3.5rem)] w-11/12 max-w-maxContent py-10 text-richblack-5">
-      <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+      <div className="relative z-0 mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-yellow-50">Compare</p>
           <h1 className="text-3xl font-bold">Compare Courses</h1>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <Link to="/courses" className="rounded-md bg-yellow-50 px-4 py-2 font-semibold text-richblack-900">
             Add courses
           </Link>
